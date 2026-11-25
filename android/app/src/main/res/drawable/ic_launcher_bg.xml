@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  adaptive 图标的背景层：与源图一致的斜向渐变。
+
+  端点色由 IconGen 从原图四角采样得到（tl #4C60D6 → br #7D9AFD，tr 与 bl 都是 #657DEA，
+  说明是一条 135° 的对角线渐变）。angle=315 即"左上 → 右下"。
+
+  为什么不用纯色：上一版取渐变中值做纯色，前景又是被裁剪的全图，
+  真机上箭头放大、背景色差，看起来"不协调"。渐变才是原图的真实观感。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="315"
+        android:endColor="#7D9AFD"
+        android:startColor="#4C60D6"
+        android:type="linear" />
+</shape>

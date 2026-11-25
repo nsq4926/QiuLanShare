@@ -1,0 +1,6 @@
+#include "src\resource.h"
+
+// 依赖声明：web\index.html 改动后必须重跑资源编译器。
+// 缺这一行时，MSBuild 认为 web.rc 没变而跳过 rc.exe，DLL 里嵌的还是旧页面——
+// 表现为"改了网页没生效"，且没有任何编译错误。
+IDR_INDEX_HTML RCDATA "web\index.html"

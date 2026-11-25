@@ -1,0 +1,14 @@
+// P3 exe 客户端的资源脚本。
+// 图标用 app\LanShare.ico（由 tools\gen-exe-icon.py 生成的多尺寸 ico）。
+//
+// **必须有 #define 数值**：不写这一行，rc.exe 会把资源存成"名字型资源"
+// （名字就是字符串 "IDI_LANSHARE_ICON"），而代码用 MAKEINTRESOURCEW(数值)
+// 去找 → 永远找不到 → LoadImage 返回 NULL → 退回 IDI_APPLICATION 默认图标。
+// 这正是"换了图标但托盘和任务栏还是默认图标"的根因（用户实测）。
+// 数值必须与 Main.cpp 的 kAppIconId 保持一致。
+//
+// **rc.exe 不跟踪 .ico 文件改动**：换图后要 touch 本文件，
+// 否则 MSBuild 认为资源没变而跳过 rc.exe，exe 里还是旧图标（无任何编译错误）。
+#define IDI_LANSHARE_ICON 101
+
+IDI_LANSHARE_ICON ICON "LanShare.ico"

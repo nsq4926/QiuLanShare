@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  明文流量策略（上架审核要看这个文件）。
+
+  本应用的 HTTP 只在**同一局域网内**跑：对端是 192.168.x.x / 10.x.x.x / 172.16-31.x.x
+  这类私有地址，端口 8765 起。局域网里没有可签发的证书，所以必须允许明文；
+  但 Android 的 network-security-config 只能按域名放行，不能按网段放行，
+  因此这里只能整体放开，并在审核备注里说明「仅与本机同网段 IP 通信，不访问公网」。
+
+  真要收窄，只有两条路：给每台设备自签证书（体验灾难），或改用 HTTPS + 固定 IP 证书
+  （局域网内不可行）。当前策略是权衡后的结果，不是漏配。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

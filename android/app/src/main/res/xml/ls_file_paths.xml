@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  分享用的 FileProvider 路径表。
+
+  只暴露应用自己的私有目录（收到的图片/文件都落在 filesDir/save 下）：
+  分享出去的 URI 是 content://<包名>.fileprovider/... ，对方进程只能按这一次
+  授予的读权限取这一个文件，拿不到别的。**不要**加 root-path，
+  那等于把整个 / 交给对方。
+-->
+<paths>
+    <files-path name="ls_files" path="." />
+    <cache-path name="ls_cache" path="." />
+</paths>
